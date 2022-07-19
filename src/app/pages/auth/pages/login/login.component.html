@@ -1,1 +1,24 @@
-<p>login works!</p>
+<main>
+    <div *ngIf="!(afAuth.authState | async)">
+        <h1>Login</h1>
+        <button mat-raised-button appGoogleSign>
+            <span class="icon">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon>
+            </span>
+      
+            Login with google
+        </button>
+    </div>
+    <div *ngIf="afAuth.authState | async as user">
+       <p>
+        logged in as <strong> {{user.email}}</strong>
+       </p>
+       <button mat-raised-button (click)="logout()">
+        <span class="icon">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon>
+        </span>
+        Logout
+        </button>
+
+    </div>
+</main>
